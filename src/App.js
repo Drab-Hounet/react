@@ -21,6 +21,35 @@ class Header extends Component {
   }
 }
 
+class Wrapper extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      showModal: false,
+    }
+    this.onLoginSuccess = this.onLoginSuccess.bind(this);
+  }
+
+  onLoginSuccess(stateLog) {
+    console.log(stateLog);
+    this.setState({
+      showModal: true,
+    });
+    if(stateLog==='ok'){
+
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Login onLoginSuccess={this.onLoginSuccess}/>
+        <ListUsers showModal={this.state.showModal}/>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   render() {
     return(
@@ -30,8 +59,7 @@ class App extends Component {
         <Clock/>
       </div>
       <div className="App-body">
-        <Login/>
-        <ListUsers/>
+        <Wrapper />
       </div>
       </div>
   )}

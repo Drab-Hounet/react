@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// export const INTERVAL = 1000; // in order to export a value
+
 class Clock extends Component{
   constructor(props){
       super(props);

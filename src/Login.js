@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Col, FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 
 
+
 class Login extends Component{
 
   constructor(props) {
@@ -31,7 +32,9 @@ class Login extends Component{
         this.setState({
           loginOK: response
         });
+        this.props.onLoginSuccess(this.state.loginOK.statePwdApi);
         console.log(this.state.loginOK.statePwdApi);
+
       })
   }
 
@@ -42,6 +45,8 @@ class Login extends Component{
   handleChangePass(event){
     this.setState({password:event.target.value});
   }
+
+
 
   render(){
     return(
