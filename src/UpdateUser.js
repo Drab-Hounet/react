@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form, FormGroup, Col, ControlLabel, FormControl}  from 'react-bootstrap';
+import {Fade, Button, Form, FormGroup, Col, ControlLabel, FormControl, Label}  from 'react-bootstrap';
 
 
 class UpdateUser extends Component {
@@ -7,11 +7,14 @@ class UpdateUser extends Component {
     super(props);
     this.state = {  adress: this.props.user.adress,
                     age: this.props.user.age,
-                    phone: this.props.user.phone};
+                    phone: this.props.user.phone,
+                    stateUpdate : ''};
 
     this.handleChangeAdress = this.handleChangeAdress.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
     this.handleChangePhone = this.handleChangePhone.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,14 +45,15 @@ class UpdateUser extends Component {
          'Content-type': "application/x-www-form-urlencoded; charset=UTF-8"
       },
       body: JSON.stringify({json :{
-              idUser : 31,
-              adress : this.state.adress,
-              age : this.state.age,
-              phone : this.state.phone,
+              idUser  : this.props.user.idUser,
+              adress  : this.state.adress,
+              age     : this.state.age,
+              phone   : this.state.phone,
             }})
     }).then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        console.log(response.majMessage);
+        (response.majMessage === 'UPDATE_USER_SUCCESS')?this.setState({stateUpdate:'mise à jour réussi !'}):1;
       })
   }
 
@@ -88,6 +92,9 @@ class UpdateUser extends Component {
             <Button type="button" onClick={this.handleSubmit}>
               Save
             </Button>
+          </Col>
+          <Col sm={6}>
+              <Label bsStyle="success">{this.state.stateUpdate}</Label>
           </Col>
         </FormGroup>
       </Form>

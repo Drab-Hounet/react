@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Col, FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
+import {Label, Button, Form, Col, FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 
 
 
@@ -34,7 +34,6 @@ class Login extends Component{
         });
         this.props.onLoginSuccess(this.state.loginOK.statePwdApi);
         console.log(this.state.loginOK.statePwdApi);
-
       })
   }
 
@@ -76,7 +75,7 @@ class Login extends Component{
           </Button>
         </Col>
         <Col sm={6}>
-          <p>{this.state.loginOK.statePwdApi}</p>
+          <Label bsStyle="success">{this.state.loginOK.statePwdApi}</Label>
         </Col>
       </FormGroup>
     </Form>

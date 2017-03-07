@@ -22,10 +22,9 @@ class ListUsers extends Component {
         this.setState({
           oneUser : user,
         });
-        //console.log(user);
       }
+      return true;
     });
-
   }
 
   componentDidMount(){
@@ -48,7 +47,7 @@ class ListUsers extends Component {
   }
 
   render(){
-    console.log(this.state.oneUser);
+    //console.log(this.state.oneUser);
 
     return(
       <div>
@@ -105,7 +104,7 @@ class ListUsers extends Component {
           </Modal>
         </ButtonToolbar>
         <br/>
-        <UpdateUser key={this.state.user && this.state.user.idUser} user={this.state.oneUser} />
+        <UpdateUser user={this.state.oneUser} />
       </div>
     );
   }

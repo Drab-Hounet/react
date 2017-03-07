@@ -32,11 +32,10 @@ class Wrapper extends Component {
 
   onLoginSuccess(stateLog) {
     console.log(stateLog);
-    this.setState({
-      showModal: true,
-    });
     if(stateLog==='ok'){
-
+      this.setState({
+        showModal: true,
+      });
     }
   }
 
